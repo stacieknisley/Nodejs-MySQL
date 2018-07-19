@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-mysql",
+  "version": "1.0.0",
+  "description": "The Bamazon Shopping App",
+  "main": "bamazonCustomer.js",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.87.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacieknisley/Nodejs-MySQL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stacieknisley/Nodejs-MySQL/issues"
+  },
+  "homepage": "https://github.com/stacieknisley/Nodejs-MySQL#readme"
+}
