@@ -32,6 +32,15 @@ connection.connect(function (err) {
 // ids, names, department, price and avaialable quantity
 
 
+// 1. Create/Add New Product
+// 2. Read/Display Inventory quantity under 5
+// 3. Update/Add to Inventory or updated a product
+// 4. Display
+// use CRUD to Create/add product, Read/display quantity of a product
+// and Updated existing product 
+
+
+// 4. name this function to (CRUD) D = Display
 // function to view all products for sale
 // * View Products for Sale
 // write commands in MySQL
@@ -70,13 +79,8 @@ function start() {
 
     });
 
-    // Add New Product
-    // Add to Inventory or updated a product
-    // Display Inventory quantity under 5
-    // use CRUD to Create/add product, Read/display quantity of a product
-    // and Updated existing product 
 
-    // name this function addProduct...
+    // 1. name this function to (CRUD) C = Create or addProduct...
     function addProduct() {
         console.log("Inserting a new product...\n");
         var query = connection.query(
@@ -102,7 +106,7 @@ function start() {
 }
 
 
-// name this function updateProduct or add inventory to existing product...
+// 3. name this function (CRUD) U =  UpdateProduct or add inventory to existing product...
 function updateProduct() {
     console.log("Update quantity...\n");
     var query = connection.query(
@@ -137,48 +141,19 @@ function updateProduct() {
     console.log(query.sql);
 }
 
+
 // Display Inventory quantity under 5
-// name this function read
+// name this function Read
+// 2. name this function (CRUD) R = Read all producs with low inventory/quantity under 5
 function readProducts() {
-    console.log("Selecting all products with inventory less than 5...\n");
-    connection.query("SELECT * FROM bamazonDB", function (err, res) {
-        if (err) throw err;
-        // Log all results of the SELECT statement
-        var quanFive = "SELECT quantity FROM bamazonDB WHERE ?";
-        var id = parseInt < 5(answer.id);
-        connection.query(quanFive, { id: id }, function (err, data) {
-            //console.log(data[0].price);
-            if (err) {
-                console.log(err);
-            }
-            console.log(res);
-            connection.end();
-        });
-    }
-
-
-
-
-
-        // * View Low Inventory / all items less than 5
-
-
-
-
-
-    // function
-    // list inventory < than 5
-    // write commands in MySQL
-
-    // function
-    // to add inventory to quantity list/table
-
-
-    // function
-    // to add New product/item to inventory list.
-
-
-
-
-
+    var query = "SELECT quantity FROM products GROUP BY product_name HAVING count(*) < 5";
+    connection.query(query, function (err, res) {
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i].product_name);
+        }
+        runSearch();
+    });
 }
+
+
+
